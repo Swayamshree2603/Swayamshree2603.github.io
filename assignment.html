@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Website</title>
+  <style>
+    /* Define CSS Variables */
+    :root {
+      --background-color: white;
+      --text-color: black;
+      --highlight-color: lightblue;
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --font-size-base: 16px;
+    }
+
+    body {
+      margin: 0;
+      font-size: var(--font-size-base);
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      --background-color: black;
+      --text-color: white;
+    }
+
+    /* Selection Styling */
+    ::selection {
+      background-color: var(--highlight-color);
+      color: var(--text-color);
+    }
+
+    /* Responsive Design */
+    .container {
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    /* Accordion Styles */
+    .accordion {
+      width: 100%;
+      max-width: 600px;
+      margin: 16px auto;
+    }
+
+    .accordion__button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      text-align: left;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+      margin-bottom: 4px;
+      transition: background 0.3s;
+    }
+
+    .accordion__button:hover {
+      background: var(--secondary-color);
+    }
+
+    .accordion__content {
+      display: none;
+      padding: 12px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+    }
+
+    .accordion__content--active {
+      display: block;
+    }
+
+    /* Button for Dark Mode */
+    #darkModeToggle {
+      margin: 16px auto;
+      display: block;
+      padding: 10px 20px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    #darkModeToggle:hover {
+      background: var(--secondary-color);
+    }
+
+    /* BEM Example */
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px auto;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .card__title {
+      font-size: 1.5em;
+      margin-bottom: 8px;
+    }
+
+    .card__description {
+      font-size: 1em;
+      margin-bottom: 16px;
+    }
+
+    .card__button {
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .card__button:hover {
+      background: var(--secondary-color);
+    }
+  </style>
+</head>
+<body>
+  <button id="darkModeToggle">Toggle Dark Mode</button>
+
+  <div class="container">
+    <div class="accordion">
+      <button class="accordion__button">Section 1</button>
+      <div class="accordion__content">Content for section 1</div>
+
+      <button class="accordion__button">Section 2</button>
+      <div class="accordion__content">Content for section 2</div>
+
+      <button class="accordion__button">Section 3</button>
+      <div class="accordion__content">Content for section 3</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="card__title">Card Title</h2>
+    <p class="card__description">This is an example of a card component using BEM naming.</p>
+    <button class="card__button">Learn More</button>
+  </div>
+
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Accordion Toggle
+    const accordionButtons = document.querySelectorAll('.accordion__button');
+    accordionButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        button.nextElementSibling.classList.toggle('accordion__content--active');
+      });
+    });
+  </script>
+</body>
+</html>
